@@ -11,7 +11,7 @@
 
 Name:             python-cliff
 Version:          1.0
-Release:          2%{?dist}
+Release:          3%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -30,6 +30,11 @@ Requires:         python-setuptools
 Requires:         python-prettytable
 Requires:         python-cmd2
 Requires:         python-tablib
+
+%if %{?rhel}%{!?rhel:0} >= 6
+BuildRequires:    python-argparse
+Requires:         python-argparse
+%endif
 
 
 %if 0%{?with_python3}
@@ -120,6 +125,9 @@ popd
 
 
 %changelog
+* Fri Jul 06 2012 Ralph Bean <rbean@redhat.com> - 1.0-3
+- Require python-argparse on epel.
+
 * Thu Jul 05 2012 Ralph Bean <rbean@redhat.com> - 1.0-2
 - Manually disable python3 support until python3-prettytable is available.
 

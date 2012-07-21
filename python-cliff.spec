@@ -11,7 +11,7 @@
 
 Name:             python-cliff
 Version:          1.0
-Release:          2%{?dist}
+Release:          3%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -120,6 +120,9 @@ popd
 
 
 %changelog
+* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Thu Jul 05 2012 Ralph Bean <rbean@redhat.com> - 1.0-2
 - Manually disable python3 support until python3-prettytable is available.
 

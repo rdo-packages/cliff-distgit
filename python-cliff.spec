@@ -2,16 +2,11 @@
 %global with_python3 1
 %endif
 
-# Setting with_python3 manually to false until python3-prettytable becomes
-# available.  https://bugzilla.redhat.com/show_bug.cgi?id=837087
-%global with_python3 0
-
-
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.0
-Release:          3%{?dist}
+Version:          1.3
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -25,11 +20,9 @@ BuildRequires:    python2-devel
 BuildRequires:    python-setuptools
 BuildRequires:    python-prettytable
 BuildRequires:    python-cmd2
-BuildRequires:    python-tablib
 Requires:         python-setuptools
 Requires:         python-prettytable
 Requires:         python-cmd2
-Requires:         python-tablib
 
 %if %{?rhel}%{!?rhel:0} >= 6
 BuildRequires:    python-argparse
@@ -42,11 +35,6 @@ BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
 BuildRequires:    python3-prettytable
 BuildRequires:    python3-cmd2
-BuildRequires:    python3-tablib
-Requires:         python3-setuptools
-Requires:         python3-prettytable
-Requires:         python3-cmd2
-Requires:         python3-tablib
 %endif
 
 %description
@@ -61,6 +49,10 @@ http://readthedocs.org/docs/cliff/en/latest/
 %package -n python3-cliff
 Summary:        Command Line Interface Formulation Framework
 Group:          Development/Libraries
+
+Requires:         python3-setuptools
+Requires:         python3-prettytable
+Requires:         python3-cmd2
 
 %description -n python3-cliff
 cliff is a framework for building command line programs. It uses setuptools
@@ -125,6 +117,14 @@ popd
 
 
 %changelog
+* Tue Jan 22 2013 Ralph Bean <rbean@redhat.com> - 1.3-1
+- Latest upstream.
+- Enabled python3 subpackage.
+- Remove requirement on python-tablib
+
+* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Fri Jul 06 2012 Ralph Bean <rbean@redhat.com> - 1.0-3
 - Require python-argparse on epel.
 

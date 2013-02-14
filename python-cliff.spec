@@ -6,7 +6,7 @@
 
 Name:             python-cliff
 Version:          1.3
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -112,6 +112,9 @@ popd
 
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Tue Jan 22 2013 Ralph Bean <rbean@redhat.com> - 1.3-1
 - Latest upstream.
 - Enabled python3 subpackage.

@@ -1,18 +1,21 @@
-%if 0%{?fedora} > 12 || 0%{?rhel} > 6
-%global with_python3 1
+%if 0%{?fedora}
+# This is disabled until python3-pyparsing-2.0 or later is available.
+# https://bugzilla.redhat.com/show_bug.cgi?id=950775
+%global with_python3 0
 %endif
 
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.3
-Release:          2%{?dist}
+Version:          1.3.2
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
 License:          ASL 2.0
 URL:              http://pypi.python.org/pypi/cliff
 Source0:          http://pypi.python.org/packages/source/c/cliff/cliff-%{version}.tar.gz
+Patch0:           python-cliff-loosen-pyparsing-constraint.patch
 
 BuildArch:        noarch
 
@@ -35,6 +38,9 @@ BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
 BuildRequires:    python3-prettytable
 BuildRequires:    python3-cmd2
+
+# This is actually a dep of python3-cmd2, but we need a certain version.
+BuildRequires:    python3-pyparsing>=2.0.0
 %endif
 
 %description
@@ -54,6 +60,9 @@ Requires:         python3-setuptools
 Requires:         python3-prettytable
 Requires:         python3-cmd2
 
+# This is actually a dep of python3-cmd2, but we need a certain version.
+Requires:         python3-pyparsing>=2.0.0
+
 %description -n python3-cliff
 cliff is a framework for building command line programs. It uses setuptools
 entry points to provide subcommands, output formatters, and other
@@ -65,6 +74,7 @@ http://readthedocs.org/docs/cliff/en/latest/
 
 %prep
 %setup -q -n %{modname}-%{version}
+%patch0 -p1 -b .pyparsing
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -112,11 +122,17 @@ popd
 %doc docs/
 %{python3_sitelib}/%{modname}
 %{python3_sitelib}/%{modname}-%{version}-*
-
 %endif
 
 
 %changelog
+* Wed Apr 10 2013 Ralph Bean <rbean@redhat.com> - 1.3.2-1
+- Latest upstream.
+- Patched pyparsing version constraint for py2.
+- Modernized python3 conditional.
+- Temporarily disabled python3 subpackage for python3-pyparsing dep.
+- Added temporary explicit dependency on python3-pyparsing>=2.0.0.
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 

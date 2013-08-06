@@ -7,8 +7,8 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.3.2
-Release:          2%{?dist}
+Version:          1.4
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -126,6 +126,9 @@ popd
 
 
 %changelog
+* Tue Aug 06 2013 Ralph Bean <rbean@redhat.com> - 1.4-1
+- Latest upstream.
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 

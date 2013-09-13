@@ -7,7 +7,7 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.4
+Version:          1.4.4
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -126,6 +126,9 @@ popd
 
 
 %changelog
+* Fri Sep 13 2013 Pádraig Brady <pbrady@redhat.com> - 1.4.4-1
+- Latest upstream.
+
 * Tue Aug 06 2013 Ralph Bean <rbean@redhat.com> - 1.4-1
 - Latest upstream.
 

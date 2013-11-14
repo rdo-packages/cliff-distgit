@@ -1,13 +1,11 @@
 %if 0%{?fedora}
-# This is disabled until python3-pyparsing-2.0 or later is available.
-# https://bugzilla.redhat.com/show_bug.cgi?id=950775
-%global with_python3 0
+%global with_python3 1
 %endif
 
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.4.4
+Version:          1.4.5
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -15,17 +13,16 @@ Group:            Development/Libraries
 License:          ASL 2.0
 URL:              http://pypi.python.org/pypi/cliff
 Source0:          http://pypi.python.org/packages/source/c/cliff/cliff-%{version}.tar.gz
-Patch0:           python-cliff-loosen-pyparsing-constraint.patch
 
 BuildArch:        noarch
 
 BuildRequires:    python2-devel
 BuildRequires:    python-setuptools
 BuildRequires:    python-prettytable
-BuildRequires:    python-cmd2
+BuildRequires:    python-cmd2 >= 0.6.7
 Requires:         python-setuptools
 Requires:         python-prettytable
-Requires:         python-cmd2
+Requires:         python-cmd2 >= 0.6.7
 
 %if %{?rhel}%{!?rhel:0} >= 6
 BuildRequires:    python-argparse
@@ -37,10 +34,7 @@ Requires:         python-argparse
 BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
 BuildRequires:    python3-prettytable
-BuildRequires:    python3-cmd2
-
-# This is actually a dep of python3-cmd2, but we need a certain version.
-BuildRequires:    python3-pyparsing>=2.0.0
+BuildRequires:    python3-cmd2 >= 0.6.7
 %endif
 
 %description
@@ -58,10 +52,7 @@ Group:          Development/Libraries
 
 Requires:         python3-setuptools
 Requires:         python3-prettytable
-Requires:         python3-cmd2
-
-# This is actually a dep of python3-cmd2, but we need a certain version.
-Requires:         python3-pyparsing>=2.0.0
+Requires:         python3-cmd2 >= 0.6.7
 
 %description -n python3-cliff
 cliff is a framework for building command line programs. It uses setuptools
@@ -74,7 +65,6 @@ http://readthedocs.org/docs/cliff/en/latest/
 
 %prep
 %setup -q -n %{modname}-%{version}
-%patch0 -p1 -b .pyparsing
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -126,6 +116,14 @@ popd
 
 
 %changelog
+* Thu Nov 14 2013 Ralph Bean <rbean@redhat.com> - 1.4.5-1
+- Latest upstream.
+- Remove patch now that the latest cmd2 and pyparsing are required.
+
+* Thu Nov 14 2013 Ralph Bean <rbean@redhat.com> - 1.4.4-2
+- Enable python3 subpackage now that python3-pyparsing is available.
+- Adjust patch to simplify pyparsing setuptools constraints further.
+
 * Fri Sep 13 2013 Pádraig Brady <pbrady@redhat.com> - 1.4.4-1
 - Latest upstream.
 

@@ -24,7 +24,7 @@ Requires:         python-setuptools
 Requires:         python-prettytable
 Requires:         python-cmd2 >= 0.6.7
 
-%if %{?rhel}%{!?rhel:0} >= 6
+%if %{?rhel}%{!?rhel:0} == 6
 BuildRequires:    python-argparse
 Requires:         python-argparse
 %endif

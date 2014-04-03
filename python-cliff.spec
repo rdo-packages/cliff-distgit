@@ -5,7 +5,7 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.4.5
+Version:          1.6.0
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -18,11 +18,23 @@ BuildArch:        noarch
 
 BuildRequires:    python2-devel
 BuildRequires:    python-setuptools
+BuildRequires:    python-pbr
 BuildRequires:    python-prettytable
 BuildRequires:    python-cmd2 >= 0.6.7
+BuildRequires:    python-stevedore
+BuildRequires:    python-six
+
+# Required for the test suite
+BuildRequires:    python-nose
+BuildRequires:    python-mock
+BuildRequires:    bash
+BuildRequires:    bash-completion
+
 Requires:         python-setuptools
 Requires:         python-prettytable
 Requires:         python-cmd2 >= 0.6.7
+Requires:         python-stevedore
+Requires:         python-six
 
 %if %{?rhel}%{!?rhel:0} == 6
 BuildRequires:    python-argparse
@@ -33,8 +45,13 @@ Requires:         python-argparse
 %if 0%{?with_python3}
 BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
+BuildRequires:    python3-pbr
 BuildRequires:    python3-prettytable
 BuildRequires:    python3-cmd2 >= 0.6.7
+BuildRequires:    python3-stevedore
+BuildRequires:    python3-six
+BuildRequires:    python3-nose
+BuildRequires:    python3-mock
 %endif
 
 %description
@@ -53,6 +70,8 @@ Group:          Development/Libraries
 Requires:         python3-setuptools
 Requires:         python3-prettytable
 Requires:         python3-cmd2 >= 0.6.7
+Requires:         python3-stevedore
+Requires:         python3-six
 
 %description -n python3-cliff
 cliff is a framework for building command line programs. It uses setuptools
@@ -66,11 +85,13 @@ http://readthedocs.org/docs/cliff/en/latest/
 %prep
 %setup -q -n %{modname}-%{version}
 
+# Remove bundled egg info
+rm -rf *.egg-info
+
 %if 0%{?with_python3}
 rm -rf %{py3dir}
 cp -a . %{py3dir}
 %endif
-
 
 %build
 %{__python} setup.py build
@@ -80,8 +101,6 @@ pushd %{py3dir}
 %{__python3} setup.py build
 popd
 %endif
-
-
 
 %install
 %if 0%{?with_python3}
@@ -93,11 +112,11 @@ popd
 %{__python} setup.py install -O1 --skip-build --root=%{buildroot}
 
 %check
-%{__python} setup.py test
+PYTHONPATH=. nosetests
 
 %if 0%{?with_python3}
 pushd %{py3dir}
-%{__python3} setup.py test
+PYTHONPATH=. nosetests-%{python3_version}
 popd
 %endif
 
@@ -116,6 +135,14 @@ popd
 
 
 %changelog
+* Tue Jan 28 2014 Ralph Bean <rbean@redhat.com> - 1.6.0-1
+- Latest upstream.
+- Add dep on python-pbr (python build reasonableness)
+- Add dep on python-stevedore
+- Add build requirements on python-nose, python-mock, and bash
+- Change check to use 'nosetests' directly.
+- Remove bundled egg-info
+
 * Thu Nov 14 2013 Ralph Bean <rbean@redhat.com> - 1.4.5-1
 - Latest upstream.
 - Remove patch now that the latest cmd2 and pyparsing are required.

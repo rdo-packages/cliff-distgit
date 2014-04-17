@@ -5,7 +5,7 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.6.0
+Version:          1.6.1
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -135,6 +135,9 @@ popd
 
 
 %changelog
+* Thu Apr 17 2014 Ralph Bean <rbean@redhat.com> - 1.6.1-1
+- Latest upstream.
+
 * Tue Jan 28 2014 Ralph Bean <rbean@redhat.com> - 1.6.0-1
 - Latest upstream.
 - Add dep on python-pbr (python build reasonableness)

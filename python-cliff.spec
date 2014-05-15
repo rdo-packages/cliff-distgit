@@ -6,7 +6,7 @@
 
 Name:             python-cliff
 Version:          1.6.1
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -135,6 +135,9 @@ popd
 
 
 %changelog
+* Wed May 14 2014 Bohuslav Kabrda <bkabrda@redhat.com> - 1.6.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
+
 * Thu Apr 17 2014 Ralph Bean <rbean@redhat.com> - 1.6.1-1
 - Latest upstream.
 

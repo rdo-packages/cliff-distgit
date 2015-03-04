@@ -5,7 +5,7 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.7.0
+Version:          1.10.0
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -122,19 +122,25 @@ popd
 
 
 %files
-%doc docs/
+%license LICENSE
+%doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
 %{python_sitelib}/%{modname}
 %{python_sitelib}/%{modname}-%{version}*
 
 %if 0%{?with_python3}
 %files -n python3-%{modname}
-%doc docs/
+%license LICENSE
+%doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
 %{python3_sitelib}/%{modname}
 %{python3_sitelib}/%{modname}-%{version}-*
 %endif
 
-
 %changelog
+* Wed Mar 04 2015 Ralph Bean <rbean@redhat.com> - 1.10.0-1
+- new version
+- Update list of files packages under %%doc.
+- Explicitly package the license file.
+
 * Mon Sep 22 2014 Alan Pevec <alan.pevec@redhat.com> 1.7.0-1
 - Update to upstream 1.7.0
 

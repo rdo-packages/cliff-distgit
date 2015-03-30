@@ -6,7 +6,7 @@
 
 Name:             python-cliff
 Version:          1.10.0
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -85,6 +85,9 @@ http://readthedocs.org/docs/cliff/en/latest/
 %prep
 %setup -q -n %{modname}-%{version}
 
+# Remove setuptools dep.  We'll supply the rpm on epel.
+sed -i '/argparse/d' requirements.txt
+
 # Remove bundled egg info
 rm -rf *.egg-info
 
@@ -136,6 +139,9 @@ popd
 %endif
 
 %changelog
+* Mon Mar 30 2015 Ralph Bean <rbean@redhat.com> - 1.10.0-2
+- Remove setuptools dep on argparse.
+
 * Wed Mar 04 2015 Ralph Bean <rbean@redhat.com> - 1.10.0-1
 - new version
 - Update list of files packages under %%doc.

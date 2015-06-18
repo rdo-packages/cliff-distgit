@@ -6,7 +6,7 @@
 
 Name:             python-cliff
 Version:          1.10.0
-Release:          2%{?dist}
+Release:          3%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -139,6 +139,9 @@ popd
 %endif
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.10.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Mon Mar 30 2015 Ralph Bean <rbean@redhat.com> - 1.10.0-2
 - Remove setuptools dep on argparse.
 

@@ -116,6 +116,7 @@ PYTHONPATH=. nosetests
 
 %if 0%{?with_python3}
 pushd %{py3dir}
+sed -i 's/nosetests/nosetests-%{python3_version}/' cliff/tests/test_help.py
 PYTHONPATH=. nosetests-%{python3_version}
 popd
 %endif

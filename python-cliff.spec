@@ -5,8 +5,8 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.10.0
-Release:          3%{?dist}
+Version:          1.13.0
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -85,11 +85,8 @@ http://readthedocs.org/docs/cliff/en/latest/
 %prep
 %setup -q -n %{modname}-%{version}
 
-# Remove setuptools dep.  We'll supply the rpm on epel.
-sed -i '/argparse/d' requirements.txt
-
-# Remove bundled egg info
-rm -rf *.egg-info
+# let RPM handle deps
+rm -f requirements.txt
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -139,6 +136,9 @@ popd
 %endif
 
 %changelog
+* Thu Jun 25 2015 Alan Pevec <alan.pevec@redhat.com> 1.13.0-1
+- Update to upstream 1.13.0
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.10.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 

@@ -5,8 +5,8 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          1.10.0
-Release:          2%{?dist}
+Version:          XXX
+Release:          XXX
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -83,7 +83,7 @@ http://readthedocs.org/docs/cliff/en/latest/
 %endif
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n %{modname}-%{upstream_version}
 
 # Remove setuptools dep.  We'll supply the rpm on epel.
 sed -i '/argparse/d' requirements.txt
@@ -128,85 +128,14 @@ popd
 %license LICENSE
 %doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}*
+%{python_sitelib}/%{modname}-*.egg-info
 
 %if 0%{?with_python3}
 %files -n python3-%{modname}
 %license LICENSE
 %doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
 %{python3_sitelib}/%{modname}
-%{python3_sitelib}/%{modname}-%{version}-*
+%{python3_sitelib}/%{modname}-*.egg-info
 %endif
 
 %changelog
-* Mon Mar 30 2015 Ralph Bean <rbean@redhat.com> - 1.10.0-2
-- Remove setuptools dep on argparse.
-
-* Wed Mar 04 2015 Ralph Bean <rbean@redhat.com> - 1.10.0-1
-- new version
-- Update list of files packages under %%doc.
-- Explicitly package the license file.
-
-* Mon Sep 22 2014 Alan Pevec <alan.pevec@redhat.com> 1.7.0-1
-- Update to upstream 1.7.0
-
-* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.1-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
-
-* Wed May 14 2014 Bohuslav Kabrda <bkabrda@redhat.com> - 1.6.1-2
-- Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
-
-* Thu Apr 17 2014 Ralph Bean <rbean@redhat.com> - 1.6.1-1
-- Latest upstream.
-
-* Tue Jan 28 2014 Ralph Bean <rbean@redhat.com> - 1.6.0-1
-- Latest upstream.
-- Add dep on python-pbr (python build reasonableness)
-- Add dep on python-stevedore
-- Add build requirements on python-nose, python-mock, and bash
-- Change check to use 'nosetests' directly.
-- Remove bundled egg-info
-
-* Thu Nov 14 2013 Ralph Bean <rbean@redhat.com> - 1.4.5-1
-- Latest upstream.
-- Remove patch now that the latest cmd2 and pyparsing are required.
-
-* Thu Nov 14 2013 Ralph Bean <rbean@redhat.com> - 1.4.4-2
-- Enable python3 subpackage now that python3-pyparsing is available.
-- Adjust patch to simplify pyparsing setuptools constraints further.
-
-* Fri Sep 13 2013 Pádraig Brady <pbrady@redhat.com> - 1.4.4-1
-- Latest upstream.
-
-* Tue Aug 06 2013 Ralph Bean <rbean@redhat.com> - 1.4-1
-- Latest upstream.
-
-* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
-
-* Wed Apr 10 2013 Ralph Bean <rbean@redhat.com> - 1.3.2-1
-- Latest upstream.
-- Patched pyparsing version constraint for py2.
-- Modernized python3 conditional.
-- Temporarily disabled python3 subpackage for python3-pyparsing dep.
-- Added temporary explicit dependency on python3-pyparsing>=2.0.0.
-
-* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
-
-* Tue Jan 22 2013 Ralph Bean <rbean@redhat.com> - 1.3-1
-- Latest upstream.
-- Enabled python3 subpackage.
-- Remove requirement on python-tablib
-
-* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
-
-* Fri Jul 06 2012 Ralph Bean <rbean@redhat.com> - 1.0-3
-- Require python-argparse on epel.
-
-* Thu Jul 05 2012 Ralph Bean <rbean@redhat.com> - 1.0-2
-- Manually disable python3 support until python3-prettytable is available.
-
-* Thu Jun 28 2012 Ralph Bean <rbean@redhat.com> - 1.0-1
-- initial package for Fedora

@@ -29,12 +29,14 @@ BuildRequires:    python-nose
 BuildRequires:    python-mock
 BuildRequires:    bash
 BuildRequires:    bash-completion
+BuildRequires:    python-unicodecsv
 
 Requires:         python-setuptools
 Requires:         python-prettytable
 Requires:         python-cmd2 >= 0.6.7
 Requires:         python-stevedore
 Requires:         python-six
+Requires:         python-unicodecsv
 
 %if %{?rhel}%{!?rhel:0} == 6
 BuildRequires:    python-argparse

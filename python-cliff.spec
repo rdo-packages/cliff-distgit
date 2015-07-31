@@ -1,5 +1,5 @@
 %if 0%{?fedora}
-%global with_python3 1
+%global with_python3 0
 %endif
 
 %global modname cliff

@@ -30,6 +30,7 @@ BuildRequires:    python-mock
 BuildRequires:    bash
 BuildRequires:    bash-completion
 BuildRequires:    python-unicodecsv
+BuildRequires:    PyYAML
 
 Requires:         python-setuptools
 Requires:         python-prettytable
@@ -37,6 +38,7 @@ Requires:         python-cmd2 >= 0.6.7
 Requires:         python-stevedore
 Requires:         python-six
 Requires:         python-unicodecsv
+Requires:         PyYAML
 
 %if %{?rhel}%{!?rhel:0} == 6
 BuildRequires:    python-argparse
@@ -54,6 +56,7 @@ BuildRequires:    python3-stevedore
 BuildRequires:    python3-six
 BuildRequires:    python3-nose
 BuildRequires:    python3-mock
+BuildRequires:    python3-PyYAML
 %endif
 
 %description

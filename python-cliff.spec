@@ -4,8 +4,10 @@
 
 %global modname cliff
 
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:             python-cliff
-Version:          1.13.0
+Version:          1.15.0
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -22,19 +24,23 @@ BuildRequires:    python-pbr
 BuildRequires:    python-prettytable
 BuildRequires:    python-cmd2 >= 0.6.7
 BuildRequires:    python-stevedore
-BuildRequires:    python-six
+BuildRequires:    python-six >= 1.9.0
 
 # Required for the test suite
 BuildRequires:    python-nose
 BuildRequires:    python-mock
 BuildRequires:    bash
 BuildRequires:    bash-completion
+BuildRequires:    python-unicodecsv
+BuildRequires:    PyYAML
 
 Requires:         python-setuptools
 Requires:         python-prettytable
 Requires:         python-cmd2 >= 0.6.7
-Requires:         python-stevedore
-Requires:         python-six
+Requires:         python-stevedore >= 1.5.0
+Requires:         python-six >= 1.9.0
+Requires:         python-unicodecsv
+Requires:         PyYAML
 
 %if %{?rhel}%{!?rhel:0} == 6
 BuildRequires:    python-argparse
@@ -52,6 +58,8 @@ BuildRequires:    python3-stevedore
 BuildRequires:    python3-six
 BuildRequires:    python3-nose
 BuildRequires:    python3-mock
+BuildRequires:    python3-PyYAML
+BuildRequires:    python3-unicodecsv
 %endif
 
 %description
@@ -83,7 +91,7 @@ http://readthedocs.org/docs/cliff/en/latest/
 %endif
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n %{modname}-%{upstream_version}
 
 # let RPM handle deps
 rm -f requirements.txt
@@ -126,17 +134,20 @@ popd
 %license LICENSE
 %doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}*
+%{python_sitelib}/%{modname}-*.egg-info
 
 %if 0%{?with_python3}
 %files -n python3-%{modname}
 %license LICENSE
 %doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
 %{python3_sitelib}/%{modname}
-%{python3_sitelib}/%{modname}-%{version}-*
+%{python3_sitelib}/%{modname}-*.egg-info
 %endif
 
 %changelog
+* Tue Sep 22 2015 Alan Pevec <alan.pevec@redhat.com> 1.15.0-1
+- Update to upstream 1.15.0
+
 * Thu Jun 25 2015 Alan Pevec <alan.pevec@redhat.com> 1.13.0-1
 - Update to upstream 1.13.0
 

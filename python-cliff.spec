@@ -31,6 +31,7 @@ BuildRequires:    bash
 BuildRequires:    bash-completion
 BuildRequires:    python-unicodecsv
 BuildRequires:    PyYAML
+BuildRequires:    which
 
 Requires:         python-setuptools
 Requires:         python-prettytable

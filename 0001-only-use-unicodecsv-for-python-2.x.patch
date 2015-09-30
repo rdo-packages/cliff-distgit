@@ -1,0 +1,46 @@
+From 25cce67529d70e3aab8653946fdf1eda12ded9b9 Mon Sep 17 00:00:00 2001
+From: Doug Hellmann <doug@doughellmann.com>
+Date: Wed, 23 Sep 2015 19:47:07 +0000
+Subject: [PATCH] only use unicodecsv for python 2.x
+
+Only use unicodecsv for python 2, since the python 3 module works fine
+with unicode data.
+
+Change-Id: I8b82248e855a6986b7541ca997d8fd56628b17a5
+Related-bug: #1491888
+---
+ cliff/formatters/commaseparated.py | 6 +++++-
+ requirements.txt                   | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/cliff/formatters/commaseparated.py b/cliff/formatters/commaseparated.py
+index ea9629d..571eed8 100644
+--- a/cliff/formatters/commaseparated.py
++++ b/cliff/formatters/commaseparated.py
+@@ -1,7 +1,11 @@
+ """Output formatters using csv format.
+ """
+ 
+-import unicodecsv as csv
++import sys
++if sys.version_info[0] == 3:
++    import csv
++else:
++    import unicodecsv as csv
+ import os
+ 
+ from .base import ListFormatter
+diff --git a/requirements.txt b/requirements.txt
+index 1dda2f0..3f20d16 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -8,5 +8,5 @@ PrettyTable<0.8,>=0.7
+ pyparsing>=2.0.1
+ six>=1.9.0
+ stevedore>=1.5.0 # Apache-2.0
+-unicodecsv>=0.8.0
++unicodecsv>=0.8.0;python_version=='2.7' or python_version=='2.6'
+ PyYAML>=3.1.0
+-- 
+2.4.3
+

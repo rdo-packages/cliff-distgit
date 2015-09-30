@@ -16,6 +16,8 @@ License:          ASL 2.0
 URL:              http://pypi.python.org/pypi/cliff
 Source0:          http://pypi.python.org/packages/source/c/cliff/cliff-%{version}.tar.gz
 
+Patch0:           0001-only-use-unicodecsv-for-python-2.x.patch
+
 BuildArch:        noarch
 
 BuildRequires:    python2-devel
@@ -59,7 +61,6 @@ BuildRequires:    python3-six
 BuildRequires:    python3-nose
 BuildRequires:    python3-mock
 BuildRequires:    python3-PyYAML
-BuildRequires:    python3-unicodecsv
 %endif
 
 %description
@@ -80,6 +81,7 @@ Requires:         python3-prettytable
 Requires:         python3-cmd2 >= 0.6.7
 Requires:         python3-stevedore
 Requires:         python3-six
+Requires:         python3-PyYAML
 
 %description -n python3-cliff
 cliff is a framework for building command line programs. It uses setuptools
@@ -92,6 +94,7 @@ http://readthedocs.org/docs/cliff/en/latest/
 
 %prep
 %setup -q -n %{modname}-%{upstream_version}
+%patch0 -p1
 
 # let RPM handle deps
 rm -f requirements.txt
@@ -147,6 +150,7 @@ popd
 %changelog
 * Tue Sep 22 2015 Alan Pevec <alan.pevec@redhat.com> 1.15.0-1
 - Update to upstream 1.15.0
+- only use unicodecsv for python 2.x
 
 * Thu Jun 25 2015 Alan Pevec <alan.pevec@redhat.com> 1.13.0-1
 - Update to upstream 1.13.0

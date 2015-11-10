@@ -8,7 +8,7 @@
 
 Name:             python-cliff
 Version:          1.15.0
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -148,6 +148,9 @@ popd
 %endif
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.15.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Tue Sep 22 2015 Alan Pevec <alan.pevec@redhat.com> 1.15.0-1
 - Update to upstream 1.15.0
 - only use unicodecsv for python 2.x

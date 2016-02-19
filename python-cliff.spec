@@ -7,16 +7,14 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:             python-cliff
-Version:          1.15.0
-Release:          3%{?dist}
+Version:          1.17.0
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
 License:          ASL 2.0
 URL:              http://pypi.python.org/pypi/cliff
 Source0:          http://pypi.python.org/packages/source/c/cliff/cliff-%{version}.tar.gz
-
-Patch0:           0001-only-use-unicodecsv-for-python-2.x.patch
 
 BuildArch:        noarch
 
@@ -94,7 +92,6 @@ http://readthedocs.org/docs/cliff/en/latest/
 
 %prep
 %setup -q -n %{modname}-%{upstream_version}
-%patch0 -p1
 
 # let RPM handle deps
 rm -f requirements.txt
@@ -148,6 +145,9 @@ popd
 %endif
 
 %changelog
+* Fri Feb 19 2016 Ralph Bean <rbean@redhat.com> - 1.17.0-1
+- new version
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.15.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 

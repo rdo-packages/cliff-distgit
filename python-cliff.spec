@@ -4,9 +4,11 @@
 
 %global modname cliff
 
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:             python-cliff
-Version:          XXX
-Release:          XXX
+Version:          2.0.0
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -145,3 +147,6 @@ popd
 %endif
 
 %changelog
+* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.0.0-
+- Update to 2.0.0
+

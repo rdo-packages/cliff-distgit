@@ -7,7 +7,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:             python-cliff
-Version:          1.17.0
+Version:          2.0.0
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -145,6 +145,9 @@ popd
 %endif
 
 %changelog
+* Sun Apr 10 2016 Kevin Fenzi <kevin@scrye.com> - 2.0.0-1
+- Update to 2.0.0. Fixes bug #1310914
+
 * Fri Feb 19 2016 Ralph Bean <rbean@redhat.com> - 1.17.0-1
 - new version
 

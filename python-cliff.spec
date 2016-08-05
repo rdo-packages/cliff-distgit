@@ -132,14 +132,14 @@ popd
 
 %files
 %license LICENSE
-%doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
+%doc doc/ README.rst ChangeLog AUTHORS CONTRIBUTING.rst
 %{python_sitelib}/%{modname}
 %{python_sitelib}/%{modname}-*.egg-info
 
 %if 0%{?with_python3}
 %files -n python3-%{modname}
 %license LICENSE
-%doc doc/ README.rst ChangeLog AUTHORS announce.rst CONTRIBUTING.rst
+%doc doc/ README.rst ChangeLog AUTHORS CONTRIBUTING.rst
 %{python3_sitelib}/%{modname}
 %{python3_sitelib}/%{modname}-*.egg-info
 %endif

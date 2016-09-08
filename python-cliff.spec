@@ -11,8 +11,8 @@ Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
 License:          ASL 2.0
-URL:              http://pypi.python.org/pypi/cliff
-Source0:          http://pypi.python.org/packages/source/c/cliff/cliff-%{version}.tar.gz
+URL:              https://pypi.io/pypi/cliff
+Source0:          https://pypi.io/packages/source/c/cliff/cliff-%{version}.tar.gz
 
 BuildArch:        noarch
 

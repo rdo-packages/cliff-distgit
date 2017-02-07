@@ -6,8 +6,8 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          XXX
-Release:          XXX
+Version:          2.4.0
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -146,3 +146,6 @@ popd
 %endif
 
 %changelog
+* Tue Feb 07 2017 Alfredo Moralejo <amoralej@redhat.com> 2.4.0-1
+- Update to 2.4.0
+

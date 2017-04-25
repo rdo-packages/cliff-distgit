@@ -146,3 +146,4 @@ popd
 %endif
 
 %changelog
+# REMOVEME: error caused by commit https://github.com/openstack/cliff/commit/c548b7b44cb6108d3f20453d9b3db8f8f7e48b19

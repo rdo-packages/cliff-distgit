@@ -26,8 +26,11 @@ BuildRequires:    python-stevedore
 BuildRequires:    python-six
 
 # Required for the test suite
-BuildRequires:    python-nose
 BuildRequires:    python-mock
+BuildRequires:    python-subunit
+BuildRequires:    python-testrepository
+BuildRequires:    python-testscenarios
+BuildRequires:    python-testtools
 BuildRequires:    bash
 BuildRequires:    bash-completion
 BuildRequires:    python-unicodecsv
@@ -56,9 +59,12 @@ BuildRequires:    python3-prettytable
 BuildRequires:    python3-cmd2 >= 0.6.7
 BuildRequires:    python3-stevedore
 BuildRequires:    python3-six
-BuildRequires:    python3-nose
 BuildRequires:    python3-mock
 BuildRequires:    python3-PyYAML
+BuildRequires:    python3-subunit
+BuildRequires:    python3-testrepository
+BuildRequires:    python3-testscenarios
+BuildRequires:    python3-testtools
 %endif
 
 %description
@@ -122,11 +128,11 @@ popd
 %{__python} setup.py install -O1 --skip-build --root=%{buildroot}
 
 %check
-PYTHONPATH=. nosetests
+PYTHONPATH=. %{__python2} setup.py test
 
 %if 0%{?with_python3}
 pushd %{py3dir}
-PYTHONPATH=. nosetests-%{python3_version}
+PYTHONPATH=. %{__python3} setup.py test
 popd
 %endif
 

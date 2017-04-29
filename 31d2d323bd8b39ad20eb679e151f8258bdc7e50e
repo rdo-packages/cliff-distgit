@@ -22,6 +22,30 @@
       "revId": "31d2d323bd8b39ad20eb679e151f8258bdc7e50e",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa201ad_e58ffc73",
+        "filename": "python-cliff.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 111
+      },
+      "writtenOn": "2017-04-29T22:34:18Z",
+      "side": 1,
+      "message": "@Yatin, yes, we need requires for tests subpackage also. Some of the test packages are consumed by some projects.",
+      "parentUuid": "baa201ad_65578c03",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "31d2d323bd8b39ad20eb679e151f8258bdc7e50e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }

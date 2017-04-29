@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa201ad_65578c03",
+        "filename": "python-cliff.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2017-04-29T06:55:01Z",
+      "side": 1,
+      "message": "@hguemar this patch is rebased over another patch that is under discussion currently https://review.rdoproject.org/r/#/c/6376/1.\n\ni was about to revise the patch.\nDon\u0027t we need these in Requires as well as they would be required if we just install and execute test packages.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "31d2d323bd8b39ad20eb679e151f8258bdc7e50e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

@@ -54,6 +54,7 @@ BuildRequires:    bash
 BuildRequires:    python-unicodecsv
 BuildRequires:    PyYAML
 BuildRequires:    which
+BuildRequires:    python-docutils
 BuildRequires:    python-subunit
 BuildRequires:    python-testrepository
 BuildRequires:    python-testscenarios

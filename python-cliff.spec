@@ -1,23 +1,28 @@
+%{!?upstream_version: %global upstream_version %{commit}}
+%global commit 5dc9b9a88a8631a5c759f2a956db4dc266d0a3fd
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+# DO NOT REMOVE ALPHATAG
+%global alphatag .%{shortcommit}git
+
 %if 0%{?fedora}
 %global with_python3 1
 %endif
 
 %global modname cliff
 
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
-
 Name:             python-cliff
 Version:          2.0.0
-Release:          1%{?dist}
+Release:          2%{?alphatag}%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
 License:          ASL 2.0
 URL:              http://pypi.python.org/pypi/cliff
-Source0:          http://pypi.python.org/packages/source/c/cliff/cliff-%{version}.tar.gz
+Source0:          https://github.com/openstack/%{modname}/archive/%{commit}.tar.gz#/%{name}-%{shortcommit}.tar.gz
 
 BuildArch:        noarch
 
+BuildRequires:    git
 BuildRequires:    python2-devel
 BuildRequires:    python-setuptools
 BuildRequires:    python-pbr
@@ -91,7 +96,7 @@ http://readthedocs.org/docs/cliff/en/latest/
 %endif
 
 %prep
-%setup -q -n %{modname}-%{upstream_version}
+%autosetup -n %{modname}-%{upstream_version} -S git
 
 # Remove setuptools dep.  We'll supply the rpm on epel.
 sed -i '/argparse/d' requirements.txt
@@ -147,6 +152,9 @@ popd
 %endif
 
 %changelog
+* Mon Jun 5 2017 Alfredo Moralejo <amoralej@redhat.com> 2.0.0-2.git5dc9b9a
+- EOL release for cliff module. Includes some fixes not included in upstream last tag for mitaka
+
 * Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.0.0-
 - Update to 2.0.0
 

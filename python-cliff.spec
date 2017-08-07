@@ -25,10 +25,9 @@ BuildRequires:    python-cmd2 >= 0.6.7
 BuildRequires:    python-stevedore
 BuildRequires:    python-six
 
-Requires:         python-setuptools
 Requires:         python-prettytable
 Requires:         python-cmd2 >= 0.6.7
-Requires:         python-stevedore
+Requires:         python-stevedore >= 1.20.0
 Requires:         python-six
 Requires:         python-unicodecsv
 Requires:         PyYAML
@@ -89,11 +88,11 @@ BuildRequires:    python3-six
 BuildRequires:    python3-PyYAML
 BuildRequires:    python3-testtools
 
-Requires:         python3-setuptools
 Requires:         python3-prettytable
 Requires:         python3-cmd2 >= 0.6.7
-Requires:         python3-stevedore
+Requires:         python3-stevedore >= 1.20.0
 Requires:         python3-six
+Requires:         python3-PyYAML
 
 %description -n python3-cliff
 cliff is a framework for building command line programs. It uses setuptools

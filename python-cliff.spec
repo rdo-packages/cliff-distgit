@@ -6,8 +6,8 @@
 %global modname cliff
 
 Name:             python-%{modname}
-Version:          XXX
-Release:          XXX
+Version:          2.8.0
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -188,3 +188,6 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Thu Aug 10 2017 Alfredo Moralejo <amoralej@redhat.com> 2.8.0-1
+- Update to 2.8.0
+

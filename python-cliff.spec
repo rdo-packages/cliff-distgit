@@ -135,25 +135,16 @@ rm -rf {test-,}requirements.txt
 # Remove bundled egg info
 rm -rf *.egg-info
 
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-%endif
-
 %build
 %{__python2} setup.py build
 
 %if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setupy build
-popd
+%py3_build
 %endif
 
 %install
 %if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setup.py install -O1 --skip-build --root=%{buildroot}
-popd
+%py3_install
 %endif
 
 %{__python2} setup.py install -O1 --skip-build --root=%{buildroot}

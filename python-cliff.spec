@@ -113,6 +113,7 @@ BuildRequires:    python3-subunit
 BuildRequires:    python3-testrepository
 BuildRequires:    python3-testscenarios
 BuildRequires:    python3-testtools
+BuildRequires:    openstack-macros
 
 Requires:         python3-%{modname} = %{version}-%{release}
 Requires:         bash
@@ -130,7 +131,7 @@ This package contains tests for the python cliff library.
 
 %prep
 %setup -q -n %{modname}-%{upstream_version}
-rm -rf {test-,}requirements.txt
+%py_req_cleanup
 
 # Remove bundled egg info
 rm -rf *.egg-info

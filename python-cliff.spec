@@ -5,6 +5,16 @@
 
 %global modname cliff
 
+%global common_desc \
+cliff is a framework for building command line programs. It uses setuptools \
+entry points to provide subcommands, output formatters, and other \
+extensions. \
+\
+Documentation for cliff is hosted on readthedocs.org at \
+http://readthedocs.org/docs/cliff/en/latest/
+
+%global common_desc_tests This package contains tests for the python cliff library.
+
 Name:             python-%{modname}
 Version:          XXX
 Release:          XXX
@@ -38,12 +48,7 @@ Requires:         python-argparse
 %endif
 
 %description
-cliff is a framework for building command line programs. It uses setuptools
-entry points to provide subcommands, output formatters, and other
-extensions.
-
-Documentation for cliff is hosted on readthedocs.org at
-http://readthedocs.org/docs/cliff/en/latest/
+%{common_desc}
 
 %package -n python-%{modname}-tests
 Summary:          Command Line Interface Formulation Framework
@@ -71,7 +76,7 @@ Requires:         python-testscenarios
 Requires:         python-testtools
 
 %description -n python-%{modname}-tests
-This package contains tests for the python cliff library.
+%{common_desc_tests}
 
 %if 0%{?with_python3}
 %package -n python3-cliff
@@ -95,12 +100,7 @@ Requires:         python3-six
 Requires:         python3-PyYAML
 
 %description -n python3-cliff
-cliff is a framework for building command line programs. It uses setuptools
-entry points to provide subcommands, output formatters, and other
-extensions.
-
-Documentation for cliff is hosted on readthedocs.org at
-http://readthedocs.org/docs/cliff/en/latest/
+%{common_desc}
 
 %package -n python3-%{modname}-tests
 Summary:          Command Line Interface Formulation Framework
@@ -125,7 +125,7 @@ Requires:         python3-testscenarios
 Requires:         python3-testtools
 
 %description -n python3-%{modname}-tests
-This package contains tests for the python cliff library.
+%{common_desc_tests}
 %endif
 
 %prep

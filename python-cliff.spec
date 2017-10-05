@@ -145,7 +145,7 @@ cp -a . %{py3dir}
 
 %if 0%{?with_python3}
 pushd %{py3dir}
-%{__python3} setupy build
+%{__python3} setup.py build
 popd
 %endif
 

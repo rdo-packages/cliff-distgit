@@ -28,20 +28,30 @@ Source0:          https://pypi.io/packages/source/c/cliff/cliff-%{version}.tar.g
 BuildArch:        noarch
 
 BuildRequires:    python2-devel
-BuildRequires:    python-setuptools
-BuildRequires:    python-pbr
-BuildRequires:    python-prettytable
+BuildRequires:    python2-setuptools
+BuildRequires:    python2-pbr
+BuildRequires:    python2-prettytable
+BuildRequires:    python2-stevedore
+BuildRequires:    python2-six
+%if 0%{?fedora} > 0
+BuildRequires:    python2-cmd2 >= 0.6.7
+%else
 BuildRequires:    python-cmd2 >= 0.6.7
-BuildRequires:    python-stevedore
-BuildRequires:    python-six
+%endif
 
-Requires:         python-prettytable
+Requires:         python2-prettytable
+Requires:         python2-stevedore >= 1.20.0
+Requires:         python2-six
+Requires:         python2-unicodecsv
+%if 0%{?fedora} > 0
+Requires:         python2-cmd2 >= 0.6.7
+Requires:         python2-pyyaml
+Requires:         python2-pyparsing
+%else
 Requires:         python-cmd2 >= 0.6.7
-Requires:         python-stevedore >= 1.20.0
-Requires:         python-six
-Requires:         python-unicodecsv
-Requires:         pyparsing
 Requires:         PyYAML
+Requires:         pyparsing
+%endif
 
 %if %{?rhel}%{!?rhel:0} == 6
 BuildRequires:    python-argparse
@@ -54,27 +64,40 @@ Requires:         python-argparse
 %package -n python-%{modname}-tests
 Summary:          Command Line Interface Formulation Framework
 # Required for the test suite
-BuildRequires:    python-mock
+BuildRequires:    python2-mock
 BuildRequires:    bash
-BuildRequires:    python-unicodecsv
-BuildRequires:    PyYAML
+BuildRequires:    python2-unicodecsv
 BuildRequires:    which
+BuildRequires:    python2-subunit
+BuildRequires:    python2-testtools
+%if 0%{?fedora} > 0
+BuildRequires:    python2-docutils
+BuildRequires:    python2-pyyaml
+BuildRequires:    python2-testscenarios
+BuildRequires:    python2-testrepository
+%else
 BuildRequires:    python-docutils
-BuildRequires:    python-subunit
-BuildRequires:    python-testrepository
+BuildRequires:    PyYAML
 BuildRequires:    python-testscenarios
-BuildRequires:    python-testtools
+BuildRequires:    python-testrepository
+%endif
 
 Requires:         python-%{modname} = %{version}-%{release}
-Requires:         python-mock
+Requires:         python2-mock
 Requires:         bash
-Requires:         python-unicodecsv
-Requires:         PyYAML
+Requires:         python2-unicodecsv
 Requires:         which
-Requires:         python-subunit
-Requires:         python-testrepository
+Requires:         python2-subunit
+Requires:         python2-testtools
+%if 0%{?fedora} > 0
+Requires:         python2-pyyaml
+Requires:         python2-testscenarios
+Requires:         python2-testrepository
+%else
+Requires:         PyYAML
 Requires:         python-testscenarios
-Requires:         python-testtools
+Requires:         python-testrepository
+%endif
 
 %description -n python-%{modname}-tests
 %{common_desc_tests}

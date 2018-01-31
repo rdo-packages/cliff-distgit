@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_2e9017ec",
+        "filename": "python-cliff.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2018-01-31T16:06:59Z",
+      "side": 1,
+      "message": "I think we need to rename packages to python2-cliff and python2-cliff-tests also. Something like https://src.fedoraproject.org/rpms/python-cliff/c/d7334c13bae198f9e09d14ee4ac2c38a6c4747f9?branch\u003dmaster",
+      "range": {
+        "startLine": 18,
+        "startChar": 18,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "dd2772d14e3aed9f6cd1a843abd2b334ea9d4c0e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

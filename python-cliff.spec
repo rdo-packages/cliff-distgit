@@ -40,6 +40,7 @@ Requires:         python-cmd2 >= 0.6.7
 Requires:         python-stevedore >= 1.20.0
 Requires:         python-six
 Requires:         python-unicodecsv
+Requires:         pyparsing
 Requires:         PyYAML
 
 %if %{?rhel}%{!?rhel:0} == 6
@@ -97,6 +98,7 @@ Requires:         python3-prettytable
 Requires:         python3-cmd2 >= 0.6.7
 Requires:         python3-stevedore >= 1.20.0
 Requires:         python3-six
+Requires:         python3-pyparsing
 Requires:         python3-PyYAML
 
 %description -n python3-cliff

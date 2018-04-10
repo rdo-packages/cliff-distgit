@@ -6,7 +6,7 @@
 %global modname cliff
 
 Name:             python-cliff
-Version:          2.4.0
+Version:          2.4.1
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -146,6 +146,9 @@ popd
 %endif
 
 %changelog
+* Tue Apr 10 2018 RDO <dev@lists.rdoproject.org> 2.4.1-1
+- Update to 2.4.1
+
 * Tue Feb 07 2017 Alfredo Moralejo <amoralej@redhat.com> 2.4.0-1
 - Update to 2.4.0
 

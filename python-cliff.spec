@@ -16,7 +16,7 @@ http://readthedocs.org/docs/cliff/en/latest/
 %global common_desc_tests This package contains tests for the python cliff library.
 
 Name:             python-%{modname}
-Version:          2.11.0
+Version:          2.11.1
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -212,6 +212,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Thu Jul 05 2018 RDO <dev@lists.rdoproject.org> 2.11.1-1
+- Update to 2.11.1
+
 * Fri Feb 09 2018 RDO <dev@lists.rdoproject.org> 2.11.0-1
 - Update to 2.11.0
 

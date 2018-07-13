@@ -6,7 +6,7 @@
 %global modname cliff
 
 Name:             python-%{modname}
-Version:          2.8.1
+Version:          2.8.2
 Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
@@ -188,6 +188,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Fri Jul 13 2018 RDO <dev@lists.rdoproject.org> 2.8.2-1
+- Update to 2.8.2
+
 * Tue Apr 03 2018 RDO <dev@lists.rdoproject.org> 2.8.1-1
 - Update to 2.8.1
 

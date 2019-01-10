@@ -1,5 +1,5 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} > 7
 %global with_python3 1
 %endif
 
@@ -37,7 +37,7 @@ BuildRequires:    python2-pbr
 BuildRequires:    python2-prettytable
 BuildRequires:    python2-stevedore
 BuildRequires:    python2-six
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 BuildRequires:    python2-cmd2 >= 0.6.7
 %else
 BuildRequires:    python-cmd2 >= 0.6.7
@@ -47,7 +47,7 @@ Requires:         python2-prettytable
 Requires:         python2-stevedore >= 1.20.0
 Requires:         python2-six
 Requires:         python2-unicodecsv
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 Requires:         python2-cmd2 >= 0.6.7
 Requires:         python2-pyyaml
 Requires:         python2-pyparsing
@@ -75,7 +75,7 @@ BuildRequires:    python2-unicodecsv
 BuildRequires:    which
 BuildRequires:    python2-subunit
 BuildRequires:    python2-testtools
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 BuildRequires:    python2-docutils
 BuildRequires:    python2-pyyaml
 BuildRequires:    python2-testscenarios
@@ -94,7 +94,7 @@ Requires:         python2-unicodecsv
 Requires:         which
 Requires:         python2-subunit
 Requires:         python2-testtools
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 Requires:         python2-pyyaml
 Requires:         python2-testscenarios
 Requires:         python2-testrepository

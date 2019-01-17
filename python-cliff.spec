@@ -184,10 +184,10 @@ rm -rf *.egg-info
 
 %check
 %if 0%{?with_python3}
-%{__python3} setup.py test
+PYTHON=python3 %{__python3} setup.py test
 rm -rf .testrepository
 %endif
-%{__python2} setup.py test
+PYTHON=python2 %{__python2} setup.py test
 
 %files -n python2-%{modname}
 %license LICENSE

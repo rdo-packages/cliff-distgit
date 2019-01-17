@@ -135,6 +135,8 @@ Requires:         python3-PyYAML
 %package -n python3-%{modname}-tests
 Summary:          Command Line Interface Formulation Framework
 # Required for the test suite
+BuildRequires:    python3-mock
+BuildRequires:    python3-docutils
 BuildRequires:    bash
 BuildRequires:    python3-unicodecsv
 BuildRequires:    python3-PyYAML
@@ -148,6 +150,8 @@ Requires:         python3-%{modname} = %{version}-%{release}
 Requires:         bash
 Requires:         python3-unicodecsv
 Requires:         python3-PyYAML
+Requires:         python3-mock
+Requires:         python3-docutils
 Requires:         which
 Requires:         python3-subunit
 Requires:         python3-testrepository
@@ -184,10 +188,10 @@ rm -rf *.egg-info
 
 %check
 %if 0%{?with_python3}
-%{__python3} setup.py test
+PYTHON=python3 %{__python3} setup.py test
 rm -rf .testrepository
 %endif
-%{__python2} setup.py test
+PYTHON=python2 %{__python2} setup.py test
 
 %files -n python2-%{modname}
 %license LICENSE

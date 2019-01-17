@@ -39,8 +39,10 @@ BuildRequires:    python2-stevedore
 BuildRequires:    python2-six
 %if 0%{?fedora} || 0%{?rhel} > 7
 BuildRequires:    python2-cmd2 >= 0.6.7
+BuildRequires:    python2-pyparsing
 %else
 BuildRequires:    python-cmd2 >= 0.6.7
+BuildRequires:    pyparsing
 %endif
 
 Requires:         python2-prettytable
@@ -117,6 +119,7 @@ BuildRequires:    python3-setuptools
 BuildRequires:    python3-pbr
 BuildRequires:    python3-prettytable
 BuildRequires:    python3-cmd2 >= 0.6.7
+BuildRequires:    python3-pyparsing
 BuildRequires:    python3-stevedore
 BuildRequires:    python3-six
 BuildRequires:    python3-PyYAML

@@ -38,10 +38,10 @@ BuildRequires:    python2-prettytable
 BuildRequires:    python2-stevedore
 BuildRequires:    python2-six
 %if 0%{?fedora} || 0%{?rhel} > 7
-BuildRequires:    python2-cmd2 >= 0.6.7
+BuildRequires:    python2-cmd2 >= 0.8.0
 BuildRequires:    python2-pyparsing
 %else
-BuildRequires:    python-cmd2 >= 0.6.7
+BuildRequires:    python-cmd2 >= 0.8.0
 BuildRequires:    pyparsing
 %endif
 
@@ -50,11 +50,11 @@ Requires:         python2-stevedore >= 1.20.0
 Requires:         python2-six
 Requires:         python2-unicodecsv
 %if 0%{?fedora} || 0%{?rhel} > 7
-Requires:         python2-cmd2 >= 0.6.7
+Requires:         python2-cmd2 >= 0.8.0
 Requires:         python2-pyyaml
 Requires:         python2-pyparsing
 %else
-Requires:         python-cmd2 >= 0.6.7
+Requires:         python-cmd2 >= 0.8.0
 Requires:         PyYAML
 Requires:         pyparsing
 %endif
@@ -118,7 +118,7 @@ BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
 BuildRequires:    python3-pbr
 BuildRequires:    python3-prettytable
-BuildRequires:    python3-cmd2 >= 0.6.7
+BuildRequires:    python3-cmd2 >= 0.8.0
 BuildRequires:    python3-pyparsing
 BuildRequires:    python3-stevedore
 BuildRequires:    python3-six
@@ -126,7 +126,7 @@ BuildRequires:    python3-PyYAML
 BuildRequires:    python3-testtools
 
 Requires:         python3-prettytable
-Requires:         python3-cmd2 >= 0.6.7
+Requires:         python3-cmd2 >= 0.8.0
 Requires:         python3-stevedore >= 1.20.0
 Requires:         python3-six
 Requires:         python3-pyparsing

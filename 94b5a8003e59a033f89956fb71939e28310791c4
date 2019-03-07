@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff6cbd17_a3674604",
+        "filename": "python-cliff.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-03-07T10:30:56Z",
+      "side": 1,
+      "message": "Where this \u003e\u003d 0.8.0 comes from?\n\n\u003e\u003d 0.6.7 match the upstream condition \"cmd2!\u003d0.8.3\" and updating it to \u003e\u003d 0.8.0 breaks the fedora builder so let\u0027s keep it as is unless it\u0027s actually breaking something.",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "94b5a8003e59a033f89956fb71939e28310791c4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

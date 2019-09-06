@@ -38,6 +38,7 @@ BuildRequires:    python2-prettytable
 BuildRequires:    python2-stevedore
 BuildRequires:    python2-six
 %if 0%{?fedora} || 0%{?rhel} > 7
+# FIXME (jcapitao): As soon as CentOS8 is out, bump version of python-cmd2 to 0.8.3
 BuildRequires:    python2-cmd2 >= 0.6.7
 BuildRequires:    python2-pyparsing
 %else

@@ -118,7 +118,7 @@ BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
 BuildRequires:    python3-pbr
 BuildRequires:    python3-prettytable
-BuildRequires:    python3-cmd2 >= 0.6.7
+BuildRequires:    python3-cmd2 >= 0.8.3
 BuildRequires:    python3-pyparsing
 BuildRequires:    python3-stevedore
 BuildRequires:    python3-six
@@ -126,7 +126,7 @@ BuildRequires:    python3-PyYAML
 BuildRequires:    python3-testtools
 
 Requires:         python3-prettytable
-Requires:         python3-cmd2 >= 0.6.7
+Requires:         python3-cmd2 >= 0.8.3
 Requires:         python3-stevedore >= 1.20.0
 Requires:         python3-six
 Requires:         python3-pyparsing

@@ -1,7 +1,16 @@
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
-%global with_python3 1
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
 %endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
+
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global modname cliff
 
@@ -27,37 +36,42 @@ Source0:          https://pypi.io/packages/source/c/cliff/cliff-%{version}.tar.g
 
 BuildArch:        noarch
 
-%package -n python2-%{modname}
+%package -n python%{pyver}-%{modname}
 Summary:          Command Line Interface Formulation Framework
-%{?python_provide:%python_provide python2-%{modname}}
-
-BuildRequires:    python2-devel
-BuildRequires:    python2-setuptools
-BuildRequires:    python2-pbr
-BuildRequires:    python2-prettytable
-BuildRequires:    python2-stevedore
-BuildRequires:    python2-six
-%if 0%{?fedora} || 0%{?rhel} > 7
-# FIXME (jcapitao): As soon as CentOS8 is out, bump version of python-cmd2 to 0.8.3
-BuildRequires:    python2-cmd2 >= 0.6.7
-BuildRequires:    python2-pyparsing
-%else
-BuildRequires:    python-cmd2 >= 0.6.7
-BuildRequires:    pyparsing
+%{?python_provide:%python_provide python%{pyver}-%{modname}}
+%if %{pyver} == 3
+Obsoletes: python2-%{modname} < %{version}-%{release}
 %endif
 
-Requires:         python2-prettytable
-Requires:         python2-stevedore >= 1.20.0
-Requires:         python2-six
-Requires:         python2-unicodecsv
-%if 0%{?fedora} || 0%{?rhel} > 7
-Requires:         python2-cmd2 >= 0.6.7
-Requires:         python2-pyyaml
-Requires:         python2-pyparsing
+BuildRequires:    python%{pyver}-devel
+BuildRequires:    python%{pyver}-setuptools
+BuildRequires:    python%{pyver}-pbr
+BuildRequires:    python%{pyver}-prettytable
+BuildRequires:    python%{pyver}-stevedore
+BuildRequires:    python%{pyver}-six
+# Handle python2 exception
+%if %{pyver} == 2
+# FIXME (jcapitao): As soon as CentOS8 is out, bump version of python-cmd2 to 0.8.3
+BuildRequires:    python-cmd2 >= 0.6.7
+BuildRequires:    pyparsing
 %else
+BuildRequires:    python%{pyver}-cmd2 >= 0.6.7
+BuildRequires:    python%{pyver}-pyparsing
+%endif
+
+Requires:         python%{pyver}-prettytable
+Requires:         python%{pyver}-stevedore >= 1.20.0
+Requires:         python%{pyver}-six
+Requires:         python%{pyver}-unicodecsv
+# Handle python2 exception
+%if %{pyver} == 2
 Requires:         python-cmd2 >= 0.6.7
 Requires:         PyYAML
 Requires:         pyparsing
+%else
+Requires:         python%{pyver}-cmd2 >= 0.6.7
+Requires:         python%{pyver}-pyyaml
+Requires:         python%{pyver}-pyparsing
 %endif
 
 %if %{?rhel}%{!?rhel:0} == 6
@@ -65,106 +79,52 @@ BuildRequires:    python-argparse
 Requires:         python-argparse
 %endif
 
-%description -n python2-%{modname}
+%description -n python%{pyver}-%{modname}
 %{common_desc}
 
-%package -n python2-%{modname}-tests
+%package -n python%{pyver}-%{modname}-tests
 Summary:          Command Line Interface Formulation Framework
 %{?python_provide:%python_provide python2-%{modname}-tests}
+%if %{pyver} == 3
+Obsoletes: python2-%{modname}-tests < %{version}-%{release}
+%endif
+
 # Required for the test suite
-BuildRequires:    python2-mock
+BuildRequires:    python%{pyver}-mock
 BuildRequires:    bash
-BuildRequires:    python2-unicodecsv
+BuildRequires:    python%{pyver}-unicodecsv
 BuildRequires:    which
-BuildRequires:    python2-subunit
-BuildRequires:    python2-testtools
-%if 0%{?fedora} || 0%{?rhel} > 7
-BuildRequires:    python2-docutils
-BuildRequires:    python2-pyyaml
-BuildRequires:    python2-testscenarios
-BuildRequires:    python2-testrepository
-%else
+BuildRequires:    python%{pyver}-subunit
+BuildRequires:    python%{pyver}-testtools
+BuildRequires:    python%{pyver}-testscenarios
+BuildRequires:    python%{pyver}-testrepository
+# Handle python2 exception
+%if %{pyver} == 2
 BuildRequires:    python-docutils
 BuildRequires:    PyYAML
-BuildRequires:    python-testscenarios
-BuildRequires:    python-testrepository
-%endif
-
-Requires:         python2-%{modname} = %{version}-%{release}
-Requires:         python2-mock
-Requires:         bash
-Requires:         python2-unicodecsv
-Requires:         which
-Requires:         python2-subunit
-Requires:         python2-testtools
-%if 0%{?fedora} || 0%{?rhel} > 7
-Requires:         python2-pyyaml
-Requires:         python2-testscenarios
-Requires:         python2-testrepository
 %else
-Requires:         PyYAML
-Requires:         python-testscenarios
-Requires:         python-testrepository
+BuildRequires:    python%{pyver}-docutils
+BuildRequires:    python%{pyver}-pyyaml
 %endif
 
-%description -n python2-%{modname}-tests
-%{common_desc_tests}
-
-%if 0%{?with_python3}
-%package -n python3-cliff
-Summary:        Command Line Interface Formulation Framework
-Group:          Development/Libraries
-
-BuildRequires:    python3-devel
-BuildRequires:    python3-setuptools
-BuildRequires:    python3-pbr
-BuildRequires:    python3-prettytable
-BuildRequires:    python3-cmd2 >= 0.6.7
-BuildRequires:    python3-pyparsing
-BuildRequires:    python3-stevedore
-BuildRequires:    python3-six
-BuildRequires:    python3-PyYAML
-BuildRequires:    python3-testtools
-
-Requires:         python3-prettytable
-Requires:         python3-cmd2 >= 0.6.7
-Requires:         python3-stevedore >= 1.20.0
-Requires:         python3-six
-Requires:         python3-pyparsing
-Requires:         python3-PyYAML
-
-%description -n python3-cliff
-%{common_desc}
-
-%package -n python3-%{modname}-tests
-Summary:          Command Line Interface Formulation Framework
-# Required for the test suite
-BuildRequires:    python3-mock
-BuildRequires:    python3-docutils
-BuildRequires:    bash
-BuildRequires:    python3-unicodecsv
-BuildRequires:    python3-PyYAML
-BuildRequires:    which
-BuildRequires:    python3-subunit
-BuildRequires:    python3-testrepository
-BuildRequires:    python3-testscenarios
-BuildRequires:    python3-testtools
-
-Requires:         python3-%{modname} = %{version}-%{release}
+Requires:         python%{pyver}-%{modname} = %{version}-%{release}
+Requires:         python%{pyver}-mock
 Requires:         bash
-Requires:         python3-unicodecsv
-Requires:         python3-PyYAML
-Requires:         python3-mock
-Requires:         python3-docutils
+Requires:         python%{pyver}-unicodecsv
 Requires:         which
-Requires:         python3-subunit
-Requires:         python3-testrepository
-Requires:         python3-testscenarios
-Requires:         python3-testtools
-
-%description -n python3-%{modname}-tests
-%{common_desc_tests}
+Requires:         python%{pyver}-subunit
+Requires:         python%{pyver}-testtools
+Requires:         python%{pyver}-testscenarios
+Requires:         python%{pyver}-testrepository
+# Handle python2 exception
+%if %{pyver} == 2
+Requires:         PyYAML
+%else
+Requires:         python%{pyver}-pyyaml
 %endif
+
+%description -n python%{pyver}-%{modname}-tests
+%{common_desc_tests}
 
 %description
 %{common_desc}
@@ -177,46 +137,22 @@ rm -rf {test-,}requirements.txt
 rm -rf *.egg-info
 
 %build
-%{__python2} setup.py build
-
-%if 0%{?with_python3}
-%py3_build
-%endif
+%{pyver_bin} setup.py build
 
 %install
-%if 0%{?with_python3}
-%py3_install
-%endif
-
-%{__python2} setup.py install -O1 --skip-build --root=%{buildroot}
+%{pyver_install}
 
 %check
-%if 0%{?with_python3}
-PYTHON=python3 %{__python3} setup.py test
-rm -rf .testrepository
-%endif
-PYTHON=python2 %{__python2} setup.py test
+PYTHON=python%{pyver} %{pyver_bin} setup.py test
 
-%files -n python2-%{modname}
+%files -n python%{pyver}-%{modname}
 %license LICENSE
 %doc doc/ README.rst ChangeLog AUTHORS CONTRIBUTING.rst
-%{python2_sitelib}/%{modname}
-%{python2_sitelib}/%{modname}-*.egg-info
-%exclude %{python2_sitelib}/%{modname}/tests
+%{pyver_sitelib}/%{modname}
+%{pyver_sitelib}/%{modname}-*.egg-info
+%exclude %{pyver_sitelib}/%{modname}/tests
 
-%files -n python2-%{modname}-tests
-%{python2_sitelib}/%{modname}/tests
-
-%if 0%{?with_python3}
-%files -n python3-%{modname}
-%license LICENSE
-%doc doc/ README.rst ChangeLog AUTHORS CONTRIBUTING.rst
-%{python3_sitelib}/%{modname}
-%{python3_sitelib}/%{modname}-*.egg-info
-%exclude %{python3_sitelib}/%{modname}/tests
-
-%files -n python3-%{modname}-tests
-%{python3_sitelib}/%{modname}/tests
-%endif
+%files -n python%{pyver}-%{modname}-tests
+%{pyver_sitelib}/%{modname}/tests
 
 %changelog

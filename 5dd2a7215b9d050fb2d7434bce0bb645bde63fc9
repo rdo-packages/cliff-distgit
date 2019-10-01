@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4be3b57_e17b532b",
+        "filename": "python-cliff.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T15:50:20Z",
+      "side": 1,
+      "message": "python2 only:\n\nhttps://github.com/openstack/cliff/blob/master/requirements.txt#L10",
+      "revId": "5dd2a7215b9d050fb2d7434bce0bb645bde63fc9",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40f6626c_f373049d",
+        "filename": "python-cliff.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T15:50:20Z",
+      "side": 1,
+      "message": "As follow up we can remove this, we do not longer build for el6.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "5dd2a7215b9d050fb2d7434bce0bb645bde63fc9",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c70965c_0cb7338f",
+        "filename": "python-cliff.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T15:50:20Z",
+      "side": 1,
+      "message": "python2 only.",
+      "revId": "5dd2a7215b9d050fb2d7434bce0bb645bde63fc9",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

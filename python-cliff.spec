@@ -53,7 +53,7 @@ BuildRequires:    python%{pyver}-cmd2 >= 0.6.7
 Requires:         python%{pyver}-prettytable
 Requires:         python%{pyver}-stevedore >= 1.20.0
 Requires:         python%{pyver}-six
-Requires:         python%{pyver}-cmd2 >= 0.6.7
+Requires:         python%{pyver}-cmd2 >= 0.8.0
 Requires:         python%{pyver}-pyparsing
 # Handle python2 exception
 %if %{pyver} == 2

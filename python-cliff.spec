@@ -47,13 +47,12 @@ BuildRequires:    python%{pyver}-prettytable
 BuildRequires:    python%{pyver}-stevedore
 BuildRequires:    python%{pyver}-six
 BuildRequires:    python%{pyver}-pyparsing
-# FIXME (jcapitao): As soon as CentOS8 is out, bump version of python-cmd2 to 0.8.3
-BuildRequires:    python%{pyver}-cmd2 >= 0.6.7
+BuildRequires:    python%{pyver}-cmd2 >= 0.8.0
 
 Requires:         python%{pyver}-prettytable
 Requires:         python%{pyver}-stevedore >= 1.20.0
 Requires:         python%{pyver}-six
-Requires:         python%{pyver}-cmd2 >= 0.6.7
+Requires:         python%{pyver}-cmd2 >= 0.8.0
 Requires:         python%{pyver}-pyparsing
 # Handle python2 exception
 %if %{pyver} == 2

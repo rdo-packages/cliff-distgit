@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dc7940b_59aef579",
+        "filename": "python-cliff.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-09T10:58:04Z",
+      "side": 1,
+      "message": "let\u0027s clear this.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 83
+      },
+      "revId": "7f5f44ddc718f326f0f989672e157569a9904a53",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44ca1a0d_06808bc1",
+        "filename": "python-cliff.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-04-09T10:58:04Z",
+      "side": 1,
+      "message": "0.8.0",
+      "range": {
+        "startLine": 51,
+        "startChar": 41,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "7f5f44ddc718f326f0f989672e157569a9904a53",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

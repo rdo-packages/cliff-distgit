@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -36,74 +25,55 @@ Source0:          https://pypi.io/packages/source/c/cliff/cliff-%{version}.tar.g
 
 BuildArch:        noarch
 
-%package -n python%{pyver}-%{modname}
+%package -n python3-%{modname}
 Summary:          Command Line Interface Formulation Framework
-%{?python_provide:%python_provide python%{pyver}-%{modname}}
+%{?python_provide:%python_provide python3-%{modname}}
 
-BuildRequires:    python%{pyver}-devel
-BuildRequires:    python%{pyver}-setuptools
-BuildRequires:    python%{pyver}-pbr
-BuildRequires:    python%{pyver}-prettytable
-BuildRequires:    python%{pyver}-stevedore
-BuildRequires:    python%{pyver}-six
-BuildRequires:    python%{pyver}-pyparsing
-BuildRequires:    python%{pyver}-cmd2 >= 0.8.0
+BuildRequires:    python3-devel
+BuildRequires:    python3-setuptools
+BuildRequires:    python3-pbr
+BuildRequires:    python3-prettytable
+BuildRequires:    python3-stevedore
+BuildRequires:    python3-six
+BuildRequires:    python3-pyparsing
+BuildRequires:    python3-cmd2 >= 0.8.0
 
-Requires:         python%{pyver}-prettytable
-Requires:         python%{pyver}-stevedore >= 1.20.0
-Requires:         python%{pyver}-six
-Requires:         python%{pyver}-cmd2 >= 0.8.0
-Requires:         python%{pyver}-pyparsing
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:         PyYAML
-Requires:         python%{pyver}-unicodecsv
-%else
-Requires:         python%{pyver}-PyYAML
-%endif
+Requires:         python3-prettytable
+Requires:         python3-stevedore >= 1.20.0
+Requires:         python3-six
+Requires:         python3-cmd2 >= 0.8.0
+Requires:         python3-pyparsing
+Requires:         python3-PyYAML
 
-%description -n python%{pyver}-%{modname}
+%description -n python3-%{modname}
 %{common_desc}
 
-%package -n python%{pyver}-%{modname}-tests
+%package -n python3-%{modname}-tests
 Summary:          Command Line Interface Formulation Framework
-%{?python_provide:%python_provide python%{pyver}-%{modname}-tests}
+%{?python_provide:%python_provide python3-%{modname}-tests}
 
 # Required for the test suite
-BuildRequires:    python%{pyver}-mock
+BuildRequires:    python3-mock
 BuildRequires:    bash
 BuildRequires:    which
-BuildRequires:    python%{pyver}-subunit
-BuildRequires:    python%{pyver}-testtools
-BuildRequires:    python%{pyver}-testscenarios
-BuildRequires:    python%{pyver}-testrepository
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:    python-docutils
-BuildRequires:    PyYAML
-BuildRequires:    python%{pyver}-unicodecsv
-%else
-BuildRequires:    python%{pyver}-docutils
-BuildRequires:    python%{pyver}-PyYAML
-%endif
+BuildRequires:    python3-subunit
+BuildRequires:    python3-testtools
+BuildRequires:    python3-testscenarios
+BuildRequires:    python3-testrepository
+BuildRequires:    python3-docutils
+BuildRequires:    python3-PyYAML
 
-Requires:         python%{pyver}-%{modname} = %{version}-%{release}
-Requires:         python%{pyver}-mock
+Requires:         python3-%{modname} = %{version}-%{release}
+Requires:         python3-mock
 Requires:         bash
 Requires:         which
-Requires:         python%{pyver}-subunit
-Requires:         python%{pyver}-testtools
-Requires:         python%{pyver}-testscenarios
-Requires:         python%{pyver}-testrepository
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:         PyYAML
-Requires:         python%{pyver}-unicodecsv
-%else
-Requires:         python%{pyver}-PyYAML
-%endif
+Requires:         python3-subunit
+Requires:         python3-testtools
+Requires:         python3-testscenarios
+Requires:         python3-testrepository
+Requires:         python3-PyYAML
 
-%description -n python%{pyver}-%{modname}-tests
+%description -n python3-%{modname}-tests
 %{common_desc_tests}
 
 %description
@@ -117,22 +87,22 @@ rm -rf {test-,}requirements.txt
 rm -rf *.egg-info
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %install
-%{pyver_install}
+%{py3_install}
 
 %check
-PYTHON=python%{pyver} %{pyver_bin} setup.py test
+PYTHON=python3 python3 setup.py test
 
-%files -n python%{pyver}-%{modname}
+%files -n python3-%{modname}
 %license LICENSE
 %doc doc/ README.rst ChangeLog AUTHORS CONTRIBUTING.rst
-%{pyver_sitelib}/%{modname}
-%{pyver_sitelib}/%{modname}-*.egg-info
-%exclude %{pyver_sitelib}/%{modname}/tests
+%{python3_sitelib}/%{modname}
+%{python3_sitelib}/%{modname}-*.egg-info
+%exclude %{python3_sitelib}/%{modname}/tests
 
-%files -n python%{pyver}-%{modname}-tests
-%{pyver_sitelib}/%{modname}/tests
+%files -n python3-%{modname}-tests
+%{python3_sitelib}/%{modname}/tests
 
 %changelog

@@ -39,7 +39,7 @@ BuildRequires:    python3-pyparsing
 BuildRequires:    python3-cmd2 >= 0.8.0
 
 Requires:         python3-prettytable
-Requires:         python3-stevedore >= 1.20.0
+Requires:         python3-stevedore >= 2.0.1
 Requires:         python3-six
 Requires:         python3-cmd2 >= 0.8.0
 Requires:         python3-pyparsing

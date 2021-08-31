@@ -1,0 +1,9 @@
+Code-Review+2: Joel Capitao <jcapitao@redhat.com>
+Code-Review+2: Javier Peña <jpena@redhat.com>
+Workflow+1: Javier Peña <jpena@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Tue, 31 Aug 2021 08:03:55 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/cliff-distgit/+/35205
+Project: openstack/cliff-distgit
+Branch: refs/heads/rpm-master

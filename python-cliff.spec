@@ -14,8 +14,8 @@ http://readthedocs.org/docs/cliff/en/latest/
 %global common_desc_tests This package contains tests for the python cliff library.
 
 Name:             python-%{modname}
-Version:          XXX
-Release:          XXX
+Version:          3.10.1
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -108,3 +108,6 @@ PYTHON=python3 python3 setup.py test
 %{python3_sitelib}/%{modname}/tests
 
 %changelog
+* Mon Mar 14 2022 RDO <dev@lists.rdoproject.org> 3.10.1-1
+- Update to 3.10.1
+

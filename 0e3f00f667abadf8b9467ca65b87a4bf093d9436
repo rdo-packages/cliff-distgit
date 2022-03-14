@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "0e3f00f667abadf8b9467ca65b87a4bf093d9436",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4359f290_a49653eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-03-14T17:58:09Z",
+      "side": 1,
+      "message": "Had to cbs untag-build cloud8s-openstack-yoga-el8-build python-stevedore-1.31.0-2.el8",
+      "revId": "0e3f00f667abadf8b9467ca65b87a4bf093d9436",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }

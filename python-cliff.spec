@@ -31,10 +31,8 @@ Summary:          Command Line Interface Formulation Framework
 
 BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
-BuildRequires:    python3-pbr
 BuildRequires:    python3-prettytable
 BuildRequires:    python3-stevedore
-BuildRequires:    python3-six
 BuildRequires:    python3-pyparsing
 BuildRequires:    python3-cmd2 >= 0.8.0
 BuildRequires:    python3-autopage
@@ -45,7 +43,6 @@ Requires:         python3-stevedore >= 2.0.1
 Requires:         python3-cmd2 >= 1.0.0
 Requires:         python3-pyparsing
 Requires:         python3-yaml >= 3.12
-Requires:         python3-pbr >= 2.0.0
 Requires:         python3-autopage >= 0.4.0
 Requires:         python3-importlib-metadata >= 4.4
 

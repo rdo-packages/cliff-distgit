@@ -33,7 +33,6 @@ BuildRequires:    python3-devel
 BuildRequires:    python3-setuptools
 BuildRequires:    python3-prettytable
 BuildRequires:    python3-stevedore
-BuildRequires:    python3-pyparsing
 BuildRequires:    python3-cmd2 >= 0.8.0
 BuildRequires:    python3-autopage
 BuildRequires:    python3-importlib-metadata
@@ -41,7 +40,6 @@ BuildRequires:    python3-importlib-metadata
 Requires:         python3-prettytable
 Requires:         python3-stevedore >= 2.0.1
 Requires:         python3-cmd2 >= 1.0.0
-Requires:         python3-pyparsing
 Requires:         python3-yaml >= 3.12
 Requires:         python3-autopage >= 0.4.0
 Requires:         python3-importlib-metadata >= 4.4

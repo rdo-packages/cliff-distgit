@@ -58,7 +58,6 @@ BuildRequires:    which
 BuildRequires:    python3-subunit
 BuildRequires:    python3-testtools
 BuildRequires:    python3-testscenarios
-BuildRequires:    python3-testrepository
 BuildRequires:    python3-docutils
 BuildRequires:    python3-PyYAML
 
@@ -69,7 +68,6 @@ Requires:         which
 Requires:         python3-subunit
 Requires:         python3-testtools
 Requires:         python3-testscenarios
-Requires:         python3-testrepository
 Requires:         python3-PyYAML
 
 %description -n python3-%{modname}-tests

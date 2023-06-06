@@ -52,7 +52,6 @@ Summary:          Command Line Interface Formulation Framework
 %{?python_provide:%python_provide python3-%{modname}-tests}
 
 # Required for the test suite
-BuildRequires:    python3-mock
 BuildRequires:    bash
 BuildRequires:    which
 BuildRequires:    python3-subunit
@@ -62,7 +61,6 @@ BuildRequires:    python3-docutils
 BuildRequires:    python3-PyYAML
 
 Requires:         python3-%{modname} = %{version}-%{release}
-Requires:         python3-mock
 Requires:         bash
 Requires:         which
 Requires:         python3-subunit

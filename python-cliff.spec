@@ -1,5 +1,7 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx coverage
 
 %global modname cliff
 
@@ -19,7 +21,7 @@ Release:          XXX
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
-License:          ASL 2.0
+License:          Apache-2.0
 URL:              https://pypi.io/pypi/cliff
 Source0:          https://pypi.io/packages/source/c/cliff/cliff-%{version}.tar.gz
 
@@ -27,42 +29,21 @@ BuildArch:        noarch
 
 %package -n python3-%{modname}
 Summary:          Command Line Interface Formulation Framework
-%{?python_provide:%python_provide python3-%{modname}}
 
 BuildRequires:    python3-devel
-BuildRequires:    python3-setuptools
-BuildRequires:    python3-prettytable
-BuildRequires:    python3-stevedore
-BuildRequires:    python3-cmd2 >= 0.8.0
-BuildRequires:    python3-autopage
-BuildRequires:    python3-importlib-metadata
-
-Requires:         python3-prettytable
-Requires:         python3-stevedore >= 2.0.1
-Requires:         python3-cmd2 >= 1.0.0
-Requires:         python3-yaml >= 3.12
-Requires:         python3-autopage >= 0.4.0
-Requires:         python3-importlib-metadata >= 4.4
-
+BuildRequires:    pyproject-rpm-macros
 %description -n python3-%{modname}
 %{common_desc}
 
 %package -n python3-%{modname}-tests
 Summary:          Command Line Interface Formulation Framework
-%{?python_provide:%python_provide python3-%{modname}-tests}
 
-# Required for the test suite
 BuildRequires:    bash
 BuildRequires:    which
-BuildRequires:    python3-subunit
-BuildRequires:    python3-testtools
-BuildRequires:    python3-testscenarios
-BuildRequires:    python3-docutils
-BuildRequires:    python3-PyYAML
-
 Requires:         python3-%{modname} = %{version}-%{release}
 Requires:         bash
 Requires:         which
+# Keep manual runtime reqs in -tests subpackages for now
 Requires:         python3-subunit
 Requires:         python3-testtools
 Requires:         python3-testscenarios
@@ -76,25 +57,43 @@ Requires:         python3-PyYAML
 
 %prep
 %setup -q -n %{modname}-%{upstream_version}
-rm -rf {test-,}requirements.txt
 
 # Remove bundled egg info
 rm -rf *.egg-info
 
+sed -i /.*-c{env:TOX_CONSTRAINTS_FILE.*/d tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs};do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+# Avoid sphinx as BR as we are not building doc
+rm cliff/tests/test_sphinxext.py
+
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
+
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
 
 %check
-PYTHON=python3 python3 setup.py test
+%tox -e %{default_toxenv}
 
 %files -n python3-%{modname}
 %license LICENSE
 %doc doc/ README.rst ChangeLog AUTHORS CONTRIBUTING.rst
 %{python3_sitelib}/%{modname}
-%{python3_sitelib}/%{modname}-*.egg-info
+%{python3_sitelib}/%{modname}-*.dist-info
 %exclude %{python3_sitelib}/%{modname}/tests
 
 %files -n python3-%{modname}-tests

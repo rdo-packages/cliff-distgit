@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f96a6c48_c1cc3426",
+        "filename": "python-cliff.spec",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-06-27T14:14:11Z",
+      "side": 1,
+      "message": "I like it!",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 36
+      },
+      "revId": "b90dc3849b3b9843b5be0ce0d29aa706097b7da7",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}

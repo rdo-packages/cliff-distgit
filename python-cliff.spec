@@ -40,6 +40,8 @@ Summary:          Command Line Interface Formulation Framework
 
 BuildRequires:    bash
 BuildRequires:    which
+# fixtures is test requirement but missing in test-requirements.txt
+BuildRequires:    python3-fixtures
 # cliff imports docutils in code which is not in requirements.txt and it is
 # needed to run tests.
 BuildRequires:    python3-docutils
@@ -51,6 +53,7 @@ Requires:         python3-subunit
 Requires:         python3-testtools
 Requires:         python3-testscenarios
 Requires:         python3-PyYAML
+Requires:         python3-fixtures
 
 %description -n python3-%{modname}-tests
 %{common_desc_tests}

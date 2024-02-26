@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cdcae94_07b58e26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2024-02-26T08:58:00Z",
+      "side": 1,
+      "message": "FTR, in upstream jobs fixtures is pulled as transitive dependency for stestr [1].\nAs we don\u0027t use stestr in the SPEC, we are not pulling fixtures\n\n[1] https://b291db78894be87214e5-48398a2823799a07bb7e05528cd97d64.ssl.cf1.rackcdn.com/893670/4/check/openstack-tox-py311/b5b5e0a/job-output.txt",
+      "revId": "a3b84aa0871a38246e1b84ab8197a9ffc06a2728",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}

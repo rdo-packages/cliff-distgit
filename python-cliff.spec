@@ -1,7 +1,7 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 # we are excluding some BRs from automatic generator
-%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx coverage stestr
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order coverage stestr
 
 %global modname cliff
 
@@ -62,6 +62,9 @@ Requires:         python3-fixtures
 %prep
 %setup -q -n %{modname}-%{upstream_version}
 
+# Sphinx > 5 is not available
+sed -i "s/sphinx.*/sphinx/g" test-requirements.txt
+
 # Remove bundled egg info
 rm -rf *.egg-info
 
@@ -77,9 +80,6 @@ for pkg in %{excluded_brs};do
     fi
   done
 done
-
-# Avoid sphinx as BR as we are not building doc
-rm cliff/tests/test_sphinxext.py
 
 %generate_buildrequires
 %pyproject_buildrequires -t -e %{default_toxenv}

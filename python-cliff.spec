@@ -78,9 +78,6 @@ for pkg in %{excluded_brs};do
   done
 done
 
-# Avoid sphinx as BR as we are not building doc
-rm cliff/tests/test_sphinxext.py
-
 %generate_buildrequires
 %pyproject_buildrequires -t -e %{default_toxenv}
 

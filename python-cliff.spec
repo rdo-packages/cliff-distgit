@@ -1,5 +1,7 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%{?dlrn: %global tarsources python-cliff}
+%{!?dlrn: %global tarsources python_cliff}
 # we are excluding some BRs from automatic generator
 %global excluded_brs doc8 bandit pre-commit hacking flake8-import-order coverage stestr
 
@@ -16,8 +18,8 @@ http://readthedocs.org/docs/cliff/en/latest/
 %global common_desc_tests This package contains tests for the python cliff library.
 
 Name:             python-%{modname}
-Version:          XXX
-Release:          XXX
+Version:          4.9.1
+Release:          1%{?dist}
 Summary:          Command Line Interface Formulation Framework
 
 Group:            Development/Libraries
@@ -60,7 +62,7 @@ Requires:         python3-fixtures
 %{common_desc}
 
 %prep
-%setup -q -n %{modname}-%{upstream_version}
+%setup -q -n %{tarsources}-%{upstream_version}
 
 # Sphinx > 5 is not available
 sed -i "s/sphinx.*/sphinx/g" test-requirements.txt
@@ -106,3 +108,6 @@ PYTHON=python3 python3 setup.py test
 %{python3_sitelib}/%{modname}/tests
 
 %changelog
+* Fri Mar 14 2025 RDO <dev@lists.rdoproject.org> 4.9.1-1
+- Update to 4.9.1
+

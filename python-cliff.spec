@@ -1,5 +1,7 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%{?dlrn: %global tarsources python-cliff}
+%{!?dlrn: %global tarsources python_cliff}
 # we are excluding some BRs from automatic generator
 %global excluded_brs doc8 bandit pre-commit hacking flake8-import-order coverage stestr
 
@@ -60,7 +62,7 @@ Requires:         python3-fixtures
 %{common_desc}
 
 %prep
-%setup -q -n %{modname}-%{upstream_version}
+%setup -q -n %{tarsources}-%{upstream_version}
 
 # Sphinx > 5 is not available
 sed -i "s/sphinx.*/sphinx/g" test-requirements.txt

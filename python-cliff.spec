@@ -106,3 +106,4 @@ PYTHON=python3 python3 setup.py test
 %{python3_sitelib}/%{modname}/tests
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/cliff/commit/af17b570351c6d1d9ce2a2a8879ba0d93d07ca7d
